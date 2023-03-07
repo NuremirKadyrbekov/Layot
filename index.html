@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .conteiner{
+            display: flex;
+            flex-wrap: wrap;
+            width: 700px;
+            justify-content: space-between;
+            margin-top: 80px;
+        }
+        .block-item{
+            width: 200px;
+            border: 3px solid;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-bottom: 40px;
+        }
+        .block-item[block-color="1"],
+        .block-item[block-color="2"],
+        .block-item[block-color="3"] {
+            color: black;
+            background-color: rgb(236, 255, 127);
+           
+            
+
+        }
+        .block-item[block-color="4"],
+        .block-item[block-color="5"],
+        .block-item[block-color="6"] {
+            background-color: rgb(74, 240, 176);
+            color: black;
+           
+        
+
+        }
+        .block-item[block-color="7"],
+        .block-item[block-color="8"],
+        .block-item[block-color="9"] {
+            background-color: rgb(64, 151, 233); 
+
+        }
+        
+
+    </style>
+
+    <script>
+
+        let data = [
+            {
+                title:"7:25 AM",
+                img:"1.pngg.png",
+                description:"Boston"
+            },
+              {
+                title:"8:15 AM",
+                img:"2.pngg.png",
+                description:"Madrid"
+            },
+              {
+                title:"Translate",
+                img:"3.pngg.png",
+                description:"Spanish"
+            },
+              {
+                title:"Bike",
+                img:"4.pngg.png",
+                description:"13.1 Miles"
+            },
+              {
+                title:"Boat",
+                img:"5.pngg.png",
+                description:"90 minutes"
+            },
+              {
+                title:"Drive",
+                img:"6.pngg.png",
+                description:"48 Miles"
+            },
+              {
+                title:"Morning",
+                img:"7.pngg.png",
+                description:"Coffee"
+            },
+              {
+                title:"Afternoon",
+                img:"8.pngg.png",
+                description:"Gym"
+            },
+              {
+                title:"Night",
+                img:"9.pngg.png",
+                description:"Hot tub"
+            },
+            {
+                title:"Night",
+                img:"9.pngg.png",
+                description:"Hot tub"
+            },
+        ]
+        let conteiner =  document.createElement('div' )
+       
+        conteiner.classList.add('conteiner')
+        console.log(conteiner)
+
+        const renderBlock = () =>{
+            let fragment = new DocumentFragment()
+
+            data.map((item,id)=> {
+                let block = document.createElement('div')
+                block.classList.add("block-item")
+                block.setAttribute('block-color',id+1)
+
+                block.innerHTML=`
+                <div>${item.title}</div>
+                <img width = 90px src='${item.img}'/>
+                <div>${item.description}</div>
+                <hr/>
+                `
+                console.log(item)
+                fragment.append(block)
+            })
+            return fragment
+        }
+
+        conteiner.append(renderBlock())
+        document.body.append(conteiner)
+
+    </script>
+</body>
+</html>
